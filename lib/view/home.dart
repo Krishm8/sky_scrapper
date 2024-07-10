@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
-import 'package:sky_scrapper/controller/api_helper.dart';
 
 import '../modal/model.dart';
 
@@ -12,7 +11,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  TextEditingController controller = TextEditingController();
+  TextEditingController controller = TextEditingController(text: "Rajkot");
 
   @override
   Widget build(BuildContext context) {
@@ -48,6 +47,7 @@ class _HomePageState extends State<HomePage> {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
+                  focusColor: Colors.white,
                   hintText: "Enter city",
                 ),
                 controller: controller,
@@ -66,7 +66,7 @@ class _HomePageState extends State<HomePage> {
                 child: FutureBuilder(
                   future: get(
                     Uri.parse(
-                      "https://api.openweathermap.org/data/2.5/weather?appid=5664ce1fe43335490a274cdc890bd519&q=${controller.text}",
+                      "https://api.openweathermap.org/data/2.5/weather?appid=5664ce1fe43335490a274cdc890bd519&q=${controller.text??"Rajkot"}",
                     ),
                   ),
                   builder: (context, snapshot) {
@@ -164,7 +164,7 @@ class _HomePageState extends State<HomePage> {
                       return Align(
                         alignment: Alignment(0, -0.3),
                         child: CircularProgressIndicator(
-                          color: Colors.white,
+                          color: Colors.black,
                         ),
                       );
                     }

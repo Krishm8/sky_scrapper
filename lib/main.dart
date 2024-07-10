@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sky_scrapper/view/home.dart';
+import 'package:sky_scrapper/view/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       darkTheme: ThemeData.dark(),
       themeMode: ThemeMode.light,
       routes: {
-        "/": (context) => HomePage(),
+        "/": (context) => SplashScreen(),
       },
     );
   }
